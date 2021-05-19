@@ -134,6 +134,7 @@ class stats():
 obj1=stats()
 num_list=[0]
 num_string=""
+count=0
 while not done:
         obj1.lines()
         for event in pygame.event.get():
@@ -155,12 +156,18 @@ while not done:
                                 print(operation)
                                 num_list=[0]
                                 num_string=""
+                                count=1
                         for num in num_list:
                                 num_string +=str(num)
-                        number1=int(num_string)
-                        print(number1)
+                        if(count==0):
+                                number1=int(num_string)
+                                print(number1)
+                        if(count==1):
+                                number2=int(num_string)
+                                print(number2)
                         num_string=""
-                        if(num_list=="="):
+                        if(box_num=="="):
+                                print("it passed")
                                 answer=obj1.to_do(number1,number2,operation)
                                 print(answer)
                         
