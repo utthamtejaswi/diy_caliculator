@@ -128,13 +128,16 @@ class stats():
                 if(self.operation=="*"):
                         return self.number1*self.number2
                 if(self.operation=="="):
-                        return "error operation entered is wrong"
+                        raise Exception("error, operation entered is = which is entered in wrong place")
 
 
 obj1=stats()
 num_list=[0]
 num_string=""
 count=0
+number1=0
+number2=0
+operation="="
 while not done:
         obj1.lines()
         for event in pygame.event.get():
@@ -153,7 +156,6 @@ while not done:
                                 num_list.append(box_num)
                         elif (box_num == "+") or (box_num == "-") or (box_num == "/") or (box_num == "*"): 
                                 operation=box_num
-                                print(operation)
                                 num_list=[0]
                                 num_string=""
                                 count=1
@@ -161,15 +163,15 @@ while not done:
                                 num_string +=str(num)
                         if(count==0):
                                 number1=int(num_string)
-                                print(number1)
                         if(count==1):
                                 number2=int(num_string)
-                                print(number2)
                         num_string=""
                         if(box_num=="="):
-                                print("it passed")
+                                print(number1,operation,number2)
                                 answer=obj1.to_do(number1,number2,operation)
                                 print(answer)
+                                number1=0
+                                number2=0
                         
                 obj1.text()
         pygame.display.flip()
