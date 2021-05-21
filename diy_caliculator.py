@@ -172,6 +172,7 @@ while not done:
                                 print(answer)
                                 number1=0
                                 number2=0
-                        
+                                count=0
+                                num_list=[0]
                 obj1.text()
         pygame.display.flip()
