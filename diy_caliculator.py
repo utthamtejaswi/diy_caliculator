@@ -3,7 +3,7 @@ import pygame.font
 
 pygame.init()
 font = pygame.font.Font(None, 36)
-screen = pygame.display.set_mode((400,400))
+screen = pygame.display.set_mode((400,500))
 pygame.display.set_caption("caliculator")
 done = False
 count=0
@@ -49,6 +49,7 @@ class stats():
                 pygame.draw.line(screen, (255,255,255), (0,100), (400,100),5)
                 pygame.draw.line(screen, (255,255,255), (0,200), (400,200),5)
                 pygame.draw.line(screen, (255,255,255), (0,300), (400,300),5)
+                pygame.draw.line(screen, (255,255,255), (0,400), (400,400),5)
 
         def text(self):
                 text1=font.render("1", 2, (255, 255, 255))
@@ -169,10 +170,12 @@ while not done:
                         if(box_num=="="):
                                 print(number1,operation,number2)
                                 answer=obj1.to_do(number1,number2,operation)
-                                print(answer)
                                 number1=0
                                 number2=0
                                 count=0
                                 num_list=[0]
+                                text_answer=font.render("answer= "+str(answer) , 2, (255, 255, 255))
+                                text_box_answer = ((200,450))
+                                screen.blit(text_answer,text_box_answer)
                 obj1.text()
         pygame.display.flip()
