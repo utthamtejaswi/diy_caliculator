@@ -4,7 +4,7 @@ import pygame.font
 pygame.init()
 font = pygame.font.Font(None, 36)
 screen = pygame.display.set_mode((400,500))
-pygame.display.set_caption("caliculator")
+pygame.display.set_caption("calculator")
 done = False
 count=0
 class stats():
@@ -124,12 +124,21 @@ class stats():
                         return self.number1+self.number2
                 if(self.operation=="-"):
                         return self.number1-self.number2
-                if(self.operation=="/"):
-                        return self.number1/self.number2
+                try:
+                        if(self.operation=="/"):
+                                return self.number1/self.number2
+                except ZeroDivisionError:
+                        return "you cant divide by zero 0. "
+                except Exception:
+                        return "please enter a proper number. "
+                
                 if(self.operation=="*"):
                         return self.number1*self.number2
+
                 if(self.operation=="="):
-                        raise Exception("error, operation entered is = which is entered in wrong place")
+                        return "'=' entered in wrong place. "
+
+                        
 
 
 obj1=stats()
@@ -160,7 +169,6 @@ while not done:
                                 num_list=[0]
                                 num_string=""
                                 count=1
-                                screen.fill((0,0,0))
                         for num in num_list:
                                 num_string +=str(num)
                         if(count==0):
@@ -173,10 +181,12 @@ while not done:
                                 answer=obj1.to_do(number1,number2,operation)
                                 number1=0
                                 number2=0
+                                operation="="
                                 count=0
                                 num_list=[0]
-                                text_answer=font.render("answer= "+str(answer) , 2, (255, 255, 255))
-                                text_box_answer = ((200,450))
+                                text_answer=font.render(str(answer) , 2, (255, 255, 255))
+                                text_box_answer = ((0,450))
+                                screen.fill((0,0,0))
                                 screen.blit(text_answer,text_box_answer)
                 obj1.text()
         pygame.display.flip()
