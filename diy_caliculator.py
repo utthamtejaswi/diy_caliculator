@@ -160,6 +160,7 @@ while not done:
                                 num_list=[0]
                                 num_string=""
                                 count=1
+                                screen.fill((0,0,0))
                         for num in num_list:
                                 num_string +=str(num)
                         if(count==0):
