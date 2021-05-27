@@ -172,19 +172,27 @@ while not done:
                         for num in num_list:
                                 num_string +=str(num)
                         if(count==0):
+                                screen.fill((0,0,0))
                                 number1=int(num_string)
+                                text_number1=font.render(str(number1),2,(255,255,255))
+                                text_box_number1=((0,450))
+                                screen.blit(text_number1,text_box_number1)
                         if(count==1):
+                                screen.fill((0,0,0))
                                 number2=int(num_string)
+                                text_number2=font.render(str(number2),2,(255,255,255))
+                                text_box_number2=((0,450))
+                                screen.blit(text_number2,text_box_number2)
                         num_string=""
                         if(box_num=="="):
                                 print(number1,operation,number2)
                                 answer=obj1.to_do(number1,number2,operation)
+                                text_answer=font.render(str(number1)+str(operation)+str(number2)+" = "+str(answer) , 2, (255, 255, 255))
                                 number1=0
                                 number2=0
                                 operation="="
                                 count=0
                                 num_list=[0]
-                                text_answer=font.render(str(answer) , 2, (255, 255, 255))
                                 text_box_answer = ((0,450))
                                 screen.fill((0,0,0))
                                 screen.blit(text_answer,text_box_answer)
