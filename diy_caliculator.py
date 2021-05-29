@@ -17,7 +17,7 @@ class stats():
                 self.box_dict={(0,0):(1)  , (0,1):(2)  , (0,2):(3)   , (0,3):("+"),
                                (1,0):(4)  , (1,1):(5)  , (1,2):(6)   , (1,3):("-"),
                                (2,0):(7)  , (2,1):(8)  , (2,2):(9)   , (2,3):("/"),
-                               (3,0):(00) , (3,1):(0)  , (3,2):("=") , (3,3):("*")}
+                               (3,0):(".") , (3,1):(0)  , (3,2):("=") , (3,3):("*")}
                                
         def return_column(self,pos):
                 self.pos=pos
@@ -100,7 +100,7 @@ class stats():
                 text_box_divide = ((350,250))
                 screen.blit(textdivide,text_box_divide)
                 
-                text00=font.render("0", 2, (255, 255, 255))
+                text00=font.render(".", 2, (255, 255, 255))
                 text_box00 = ((50,350))
                 screen.blit(text00,text_box00)
 
@@ -176,9 +176,9 @@ while not done:
                         for num in num_list:
                                 num_string +=str(num)
                         if(count==0):
-                                number1=int(num_string)
+                                number1=float(num_string)
                         if(count==1):
-                                number2=int(num_string)
+                                number2=float(num_string)
                         num_string=""
                         if(box_num=="="):
                                 print(number1,operation,number2)
