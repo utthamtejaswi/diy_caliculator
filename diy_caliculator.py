@@ -148,6 +148,7 @@ count=0
 number1=0
 number2=0
 operation="="
+to_print=""
 while not done:
         obj1.lines()
         for event in pygame.event.get():
@@ -156,6 +157,7 @@ while not done:
                         exit()
                                 
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                        screen.fill((0,0,0))
                         pos =list(pygame.mouse.get_pos())
                         pos1=75
                         column=obj1.return_column(pos)
@@ -164,25 +166,19 @@ while not done:
                         box_num=obj1.box_dict[(row,column)]
                         if (box_num!= "=") and (box_num!= "+") and (box_num!= "-") and (box_num!= "/") and (box_num!= "*"): 
                                 num_list.append(box_num)
+                                to_print+=str(box_num)
                         elif (box_num == "+") or (box_num == "-") or (box_num == "/") or (box_num == "*"): 
                                 operation=box_num
                                 num_list=[0]
                                 num_string=""
                                 count=1
+                                to_print+=str(box_num)
                         for num in num_list:
                                 num_string +=str(num)
                         if(count==0):
-                                screen.fill((0,0,0))
                                 number1=int(num_string)
-                                text_number1=font.render(str(number1),2,(255,255,255))
-                                text_box_number1=((0,450))
-                                screen.blit(text_number1,text_box_number1)
                         if(count==1):
-                                screen.fill((0,0,0))
                                 number2=int(num_string)
-                                text_number2=font.render(str(number2),2,(255,255,255))
-                                text_box_number2=((0,450))
-                                screen.blit(text_number2,text_box_number2)
                         num_string=""
                         if(box_num=="="):
                                 print(number1,operation,number2)
@@ -192,9 +188,13 @@ while not done:
                                 number2=0
                                 operation="="
                                 count=0
+                                to_print=""
                                 num_list=[0]
                                 text_box_answer = ((0,450))
                                 screen.fill((0,0,0))
                                 screen.blit(text_answer,text_box_answer)
+                text_to_print=font.render(to_print, 2 ,(255,255,255))
+                text_box_to_print=((0,450))
+                screen.blit(text_to_print,text_box_to_print)
                 obj1.text()
         pygame.display.flip()
